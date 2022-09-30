@@ -70,7 +70,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: QuickHelp.appBar(),
+      appBar: QuickHelp.appBar(context),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(

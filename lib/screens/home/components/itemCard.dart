@@ -57,8 +57,8 @@ class ItemCard extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             SizedBox(
-              width: 30 * MediaQuery.of(context).size.width,
-              height: 17 * MediaQuery.of(context).size.height,
+              width: 0.3 * MediaQuery.of(context).size.width,
+              height: 0.17 * MediaQuery.of(context).size.height,
               child: Stack(
                 children: [
                   Container(
@@ -87,7 +87,7 @@ class ItemCard extends StatelessWidget {
                     top: 0,
                     left: 0,
                     child: SvgPicture.asset(
-                      'assets/Icons/discount.svg',
+                      'assets/svg/discount.svg',
                       height: 38,
                     ),
                   ),

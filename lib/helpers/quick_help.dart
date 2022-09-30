@@ -1,9 +1,13 @@
 import 'dart:io';
 
+import 'package:asbeza_app/providers/CartProvider.dart';
+import 'package:asbeza_app/providers/counter_provider.dart';
+import 'package:asbeza_app/widgets/cart_item_length.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:provider/provider.dart';
 
 import '../animations/snack_bar_pro.dart';
 import '../animations/top_snack_bar.dart';
@@ -55,7 +59,11 @@ class QuickHelp {
             ));
   }
 
-  static appBar() {
+  static appBar(BuildContext context) {
+    CartProvider cartProvider =
+        Provider.of<CartProvider>(context, listen: false);
+    CountersProvider countersProvider =
+        Provider.of<CountersProvider>(context, listen: false);
     return AppBar(
       backgroundColor: Colors.white,
       title: SvgPicture.asset(
@@ -69,11 +77,14 @@ class QuickHelp {
             children: [
               GestureDetector(
                 onTap: () {
-                  // if (cartProvider.items.isNotEmpty) {
-                  //   Navigator.of(context).push(MaterialPageRoute(
-                  //       builder: (BuildContext context) =>
-                  //           const CartHome()));
-                  // }
+                  if (cartProvider.items.isNotEmpty) {
+                    // Navigator.of(context).push(
+                    //   MaterialPageRoute(
+                    //     builder: (BuildContext context) => const CartHome(),
+                    //   ),
+                    // );
+                    countersProvider.setTabIndex(1);
+                  }
                 },
                 child: SizedBox(
                   width: 50,
@@ -90,11 +101,11 @@ class QuickHelp {
                           "assets/svg/bag.svg",
                         ),
                       ),
-                      //  Positioned(
-                      //   left: 30,
-                      //   top: -5,
-                      //   child: CartItemLength(),
-                      // ),
+                      const Positioned(
+                        left: 30,
+                        top: -5,
+                        child: CartItemLength(),
+                      ),
                     ],
                   ),
                 ),

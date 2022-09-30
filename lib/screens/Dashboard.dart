@@ -5,7 +5,7 @@ import 'package:asbeza_app/models/product.dart';
 import 'package:asbeza_app/models/sub_category.dart';
 import 'package:asbeza_app/providers/counter_provider.dart';
 import 'package:asbeza_app/screens/Bonus_screen.dart';
-import 'package:asbeza_app/screens/history_screen.dart';
+import 'package:asbeza_app/screens/cart/cart_screen.dart';
 import 'package:asbeza_app/screens/home/home_screen.dart';
 import 'package:asbeza_app/screens/profile_screen.dart';
 import 'package:asbeza_app/services/category.dart';
@@ -29,7 +29,7 @@ class Dashboard extends StatefulWidget {
 }
 
 class _DashboardState extends State<Dashboard> {
-  String selectedCategoryId = "id_1";
+  String selectedCategoryId = "c1";
   List<SubCategory> subCategories = [];
   List<Product> products = [];
   List<Product> filteredProducts = [];
@@ -264,6 +264,26 @@ class _DashboardState extends State<Dashboard> {
     context.read<CountersProvider>().setTabIndex(index);
   }
 
+  Future<void> _onRefresh() {
+    clearAll();
+    return Future.delayed(const Duration(seconds: 2), () {
+      setState(() {
+        loading = true;
+      });
+      getCategories();
+      getProducts(selectedCategoryId);
+    });
+  }
+
+  void clearAll() {
+    setState(() {
+      selectedCategoryId = 'c1';
+      selectedFilters = [];
+      selectedSort = null;
+      filteredProducts = products;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     final List<Widget> widgetOptions = <Widget>[
@@ -280,7 +300,8 @@ class _DashboardState extends State<Dashboard> {
         loading: loading,
         product: products,
       ),
-      const HistoryScreen(),
+      // const HistoryScreen(),
+      const CartScreen(),
       const BonusScreen(),
       const ProfileScreen(),
     ];
@@ -296,12 +317,15 @@ class _DashboardState extends State<Dashboard> {
         }
         return true;
       },
-      child: SafeArea(
-          child: Scaffold(
-        body:
-            widgetOptions.elementAt(context.watch<CountersProvider>().tabIndex),
-        bottomNavigationBar: bottomNavBar(context),
-      )),
+      child: RefreshIndicator(
+        onRefresh: _onRefresh,
+        child: SafeArea(
+            child: Scaffold(
+          body: widgetOptions
+              .elementAt(context.watch<CountersProvider>().tabIndex),
+          bottomNavigationBar: bottomNavBar(context),
+        )),
+      ),
     );
   }
 }

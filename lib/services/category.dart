@@ -19,23 +19,6 @@ class CategoryService {
   ];
 
   Future<List<Category>?> categories() async {
-    return catItems;
+    return Future.delayed(const Duration(seconds: 1)).then((value) => catItems);
   }
-  // static Future<List<Category>?> categories() async {
-  //   try {
-  //     QueryOptions options =
-  //         QueryOptions(document: gql(GetSchema.getCategoryQuery));
-
-  //     QueryResult response = await client.value.query(options);
-  //     if (response.data != null) {
-  //       return CategoriesResult.fromJson(response.data!).categories;
-  //     } else {
-  //       return throw Error;
-  //     }
-  //   } catch (e) {
-  //     dev.log(e.toString());
-  //   }
-
-  //   return null;
-  // }
 }

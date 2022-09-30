@@ -1,8 +1,15 @@
 class IOrderForm {
-  late String email, firstName, lastName, add1, add2, city, country, direction;
+  late String phoneNumber,
+      firstName,
+      lastName,
+      add1,
+      add2,
+      city,
+      country,
+      direction;
 
   IOrderForm({
-    required this.email,
+    required this.phoneNumber,
     required this.firstName,
     required this.lastName,
     required this.add1,
@@ -13,7 +20,7 @@ class IOrderForm {
   });
 
   Map<String, dynamic> toJson() => {
-        "email": email,
+        "phoneNumber": phoneNumber,
         "firstName": firstName,
         "lastName": lastName,
         "add1": add1,
@@ -24,7 +31,7 @@ class IOrderForm {
       };
 
   factory IOrderForm.fromJson(Map<String, dynamic> json) => IOrderForm(
-        email: json["email"],
+        phoneNumber: json["phoneNumber"],
         firstName: json["firstName"],
         lastName: json["lastName"],
         add1: json["add1"],
@@ -36,7 +43,7 @@ class IOrderForm {
 
   @override
   String toString() {
-    return 'email: $email, firstName: $firstName, lastName: $lastName, add1: $add1, add2: $add2, city: $city, country: $add2, direction: $direction';
+    return 'phoneNumber: $phoneNumber, firstName: $firstName, lastName: $lastName, add1: $add1, add2: $add2, city: $city, country: $add2, direction: $direction';
   }
 }
 
@@ -74,7 +81,7 @@ class OrderItemInput {
 }
 
 class OrderInput {
-  late String customerEmailPhone;
+  late String customerphoneNumber;
   late String customerFullName;
   late String customerAddress1;
   late String customerAddress2;
@@ -84,7 +91,7 @@ class OrderInput {
   late List<OrderItemInput> orderItems;
 
   OrderInput({
-    required this.customerEmailPhone,
+    required this.customerphoneNumber,
     required this.customerFullName,
     required this.customerAddress1,
     required this.customerAddress2,
@@ -95,7 +102,7 @@ class OrderInput {
   });
 
   Map<String, dynamic> toJson() => {
-        "customerEmailPhone": customerEmailPhone,
+        "customerphoneNumberPhone": customerphoneNumber,
         "customerFullName": customerFullName,
         "customerAddress1": customerAddress1,
         "customerAddress2": customerAddress2,
@@ -110,23 +117,27 @@ class CreatedOrder {
   late String orderId;
   late String orderNumber;
   late String deliveryDate;
+  late OrderInput orderedItems;
 
   CreatedOrder({
     required this.orderId,
     required this.orderNumber,
     required this.deliveryDate,
+    required this.orderedItems,
   });
 
   factory CreatedOrder.fromJson(Map<String, dynamic> json) => CreatedOrder(
         orderId: json["orderId"],
         orderNumber: json["orderNumber"],
         deliveryDate: json["deliveryDate"],
+        orderedItems: json["orderedItems"],
       );
 
   Map<String, dynamic> toJson() => {
         "orderId": orderId,
         "orderNumber": orderNumber,
         "deliveryDate": deliveryDate,
+        "orderedItems": orderedItems,
       };
 
   @override
