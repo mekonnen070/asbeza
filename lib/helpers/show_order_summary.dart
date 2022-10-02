@@ -2,7 +2,7 @@ import 'dart:math';
 
 import 'package:asbeza_app/helpers/order_summary_card.dart';
 import 'package:asbeza_app/providers/CartProvider.dart';
-import 'package:asbeza_app/utils/PriceCalcultor.dart';
+import 'package:asbeza_app/utils/PriceCalculator.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -76,7 +76,7 @@ class _OrderSummaryState extends State<OrderSummary>
                     width: 8,
                   ),
                   const Text(
-                    "Show order summary",
+                    "Show summary",
                     style: TextStyle(fontSize: 22, color: Colors.black),
                   ),
                   const SizedBox(

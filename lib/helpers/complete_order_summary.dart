@@ -1,6 +1,6 @@
 import 'package:asbeza_app/helpers/order_summary_card.dart';
 import 'package:asbeza_app/providers/CartProvider.dart';
-import 'package:asbeza_app/utils/PriceCalcultor.dart';
+import 'package:asbeza_app/utils/PriceCalculator.dart';
 import 'package:flutter/material.dart';
 
 class CompleteOrderSummary extends StatelessWidget {

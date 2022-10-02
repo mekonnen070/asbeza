@@ -65,10 +65,11 @@ class OrderCompleteScreen extends StatelessWidget {
                 onPressed: () {
                   cartProvider.removeAll();
                   countersProvider.setTabIndex(0);
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const Dashboard()));
+                  Future.delayed(const Duration(milliseconds: 50)).then(
+                      (value) => Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const Dashboard())));
                 },
                 style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all(Colors.white),

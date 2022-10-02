@@ -1,3 +1,4 @@
+import 'package:asbeza_app/helpers/quick_help.dart';
 import 'package:asbeza_app/models/product.dart';
 import 'package:asbeza_app/providers/CartProvider.dart';
 import 'package:flutter/material.dart';
@@ -21,10 +22,10 @@ class AddToCartButton extends StatelessWidget {
 
     return TextButton(
       style: TextButton.styleFrom(
+        foregroundColor: Colors.white,
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20),
             side: const BorderSide(width: 1, color: Colors.grey)),
-        primary: Colors.white,
         backgroundColor: isInCart ? bgColor : Colors.black,
         padding: const EdgeInsets.symmetric(
           horizontal: 20,
@@ -33,9 +34,17 @@ class AddToCartButton extends StatelessWidget {
       onPressed: isInCart
           ? () {
               cartProvider.removeAnItem(product);
+              QuickHelp.showAppNotification(
+                  context: context,
+                  title: 'Item removed from cart',
+                  isError: true);
             }
           : () {
               cartProvider.addNewItem(product);
+              QuickHelp.showAppNotification(
+                  context: context,
+                  title: 'Item added to cart',
+                  isError: false);
             },
       child: FittedBox(
         child: Padding(

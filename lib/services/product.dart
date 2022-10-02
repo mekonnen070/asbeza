@@ -40,9 +40,21 @@ List<Product> _spiceProducts = [
       images: chilliImage)
 ];
 
-List<Image> appleImage = [Image(url: '')];
-List<Image> brocoliImage = [Image(url: '')];
-List<Image> chilliImage = [Image(url: '')];
+List<Image> appleImage = [
+  Image(
+      url:
+          'https://raw.githubusercontent.com/mekonnen070/asbeza_assets/master/apple.png')
+];
+List<Image> brocoliImage = [
+  Image(
+      url:
+          'https://raw.githubusercontent.com/mekonnen070/asbeza_assets/master/broccoli.png')
+];
+List<Image> chilliImage = [
+  Image(
+      url:
+          'https://raw.githubusercontent.com/mekonnen070/asbeza_assets/master/chilli.png')
+];
 
 class ProductService {
   static Future<List<Product>?> products(String categoryId) async {

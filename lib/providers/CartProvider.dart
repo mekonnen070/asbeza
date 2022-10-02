@@ -18,6 +18,19 @@ class CartItem {
 class CartProvider extends ChangeNotifier {
   List<CartItem> _items = [];
 
+  bool _is_already = false;
+
+  bool get is_already => _is_already;
+
+  checkAdded(String id) {
+    for (var i in _items) {
+      i.productId == id;
+      _is_already = true;
+    }
+    return _is_already;
+    notifyListeners();
+  }
+
   UnmodifiableListView<CartItem> get items => UnmodifiableListView(_items);
 
   void addNewItem(Product item) {

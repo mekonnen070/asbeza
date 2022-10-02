@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:asbeza_app/providers/CartProvider.dart';
 import 'package:asbeza_app/providers/counter_provider.dart';
+import 'package:asbeza_app/screens/cart/cart_screen.dart';
 import 'package:asbeza_app/widgets/cart_item_length.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -65,6 +66,7 @@ class QuickHelp {
     CountersProvider countersProvider =
         Provider.of<CountersProvider>(context, listen: false);
     return AppBar(
+      titleSpacing: 5.0,
       backgroundColor: Colors.white,
       title: SvgPicture.asset(
         'assets/svg/logo.svg',
@@ -78,12 +80,12 @@ class QuickHelp {
               GestureDetector(
                 onTap: () {
                   if (cartProvider.items.isNotEmpty) {
-                    // Navigator.of(context).push(
-                    //   MaterialPageRoute(
-                    //     builder: (BuildContext context) => const CartHome(),
-                    //   ),
-                    // );
-                    countersProvider.setTabIndex(1);
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (BuildContext context) => const CartScreen(),
+                      ),
+                    );
+                    // countersProvider.setTabIndex(1);
                   }
                 },
                 child: SizedBox(

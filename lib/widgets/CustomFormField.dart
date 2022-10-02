@@ -22,6 +22,7 @@ class CustomFormField extends StatelessWidget {
     return Column(
       children: [
         TextFormField(
+          textInputAction: TextInputAction.next,
           controller: controller,
           inputFormatters: inputFormatters,
           validator: validator,

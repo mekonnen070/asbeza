@@ -112,7 +112,7 @@ class _OrderFormState extends State<OrderForm> {
             height: 24,
           ),
           CustomFormField(
-            hintText: 'phoneNumber or Phone Number',
+            hintText: ' Phone Number',
             controller: phoneNumController,
             initialValue: phoneNumber,
             validator: (val) {
@@ -234,10 +234,10 @@ class _OrderFormState extends State<OrderForm> {
             height: 16,
           ),
           CustomFormField(
-            hintText: 'Postal/direction',
+            hintText: 'Next to hotel',
             controller: directionController,
             validator: (val) {
-              if (!val!.isNotNull) return 'Enter Postal or direction';
+              if (!val!.isNotNull) return 'Enter a familiar direction';
               return null;
             },
             onChange: (value) {
@@ -271,11 +271,12 @@ class _OrderFormState extends State<OrderForm> {
                   },
                 ),
               ),
-              const SizedBox(
-                width: 12,
-              ),
+              // const SizedBox(
+              //   width: 12,
+              // ),
               const Text(
-                "Save this information for next time",
+                "Save this information.",
+                overflow: TextOverflow.ellipsis,
                 style: TextStyle(fontSize: 18),
               )
             ],

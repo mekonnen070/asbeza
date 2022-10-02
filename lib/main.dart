@@ -29,6 +29,34 @@ class MyApp extends StatelessWidget {
       theme: lightThemeData(context),
       darkTheme: darkThemeData(context),
       home: const Dashboard(),
+      routes: {'/finalOrderPage': (context) => const FinalOrderPage()},
     );
+  }
+}
+
+/*
+actions: [
+        // This text button is used to intentionally throw an error when pressed
+        // in order to test the error reporting for crashlytics.
+        TextButton(
+          style: TextButton.styleFrom(
+            foregroundColor: Colors.white,
+            backgroundColor: Colors.red,
+          ),
+          onPressed: () => throw Exception(),
+          child: const Text("Throw Error"),
+        ),
+      ],
+ */
+
+class FinalOrderPage extends StatelessWidget {
+  const FinalOrderPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const SafeArea(
+        child: Scaffold(
+      body: Center(child: Text('Successfully order')),
+    ));
   }
 }

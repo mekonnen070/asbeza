@@ -22,7 +22,7 @@ class _OrderLoadingState extends State<OrderLoading> {
       orderItems.add(OrderItemInput(
           orderId: "", productId: item.productId, quantity: item.itemCount));
     }
-    CreatedOrder? res = await OrderService.createOrder(OrderInput(
+    CreatedOrder? res = await OrderService().createOrder(OrderInput(
         customerphoneNumber: orderForm.phoneNumber,
         customerFullName: orderForm.firstName + orderForm.lastName,
         customerAddress1: orderForm.add1,
@@ -33,7 +33,7 @@ class _OrderLoadingState extends State<OrderLoading> {
         orderItems: orderItems));
     if (res != null) {
       await Navigator.of(context)
-          .push(MaterialPageRoute(builder: (BuildContext context) {
+          .pushReplacement(MaterialPageRoute(builder: (BuildContext context) {
         return OrderCompleteScreen(
           orderNumber: res.orderNumber,
           deliveryDate: res.deliveryDate,

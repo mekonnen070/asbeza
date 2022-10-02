@@ -5,7 +5,7 @@ import 'package:asbeza_app/models/product.dart';
 import 'package:asbeza_app/models/sub_category.dart';
 import 'package:asbeza_app/providers/counter_provider.dart';
 import 'package:asbeza_app/screens/Bonus_screen.dart';
-import 'package:asbeza_app/screens/cart/cart_screen.dart';
+import 'package:asbeza_app/screens/history_screen.dart';
 import 'package:asbeza_app/screens/home/home_screen.dart';
 import 'package:asbeza_app/screens/profile_screen.dart';
 import 'package:asbeza_app/services/category.dart';
@@ -300,8 +300,8 @@ class _DashboardState extends State<Dashboard> {
         loading: loading,
         product: products,
       ),
-      // const HistoryScreen(),
-      const CartScreen(),
+      const HistoryScreen(),
+      // const CartScreen(),
       const BonusScreen(),
       const ProfileScreen(),
     ];
