@@ -6,6 +6,7 @@ import 'package:asbeza_app/widgets/AddToCatButton.dart';
 import 'package:asbeza_app/widgets/shimmers/product_item_shimmer.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
 
@@ -57,7 +58,7 @@ class ItemCard extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             SizedBox(
-              width: 0.3 * MediaQuery.of(context).size.width,
+              width: 0.25 * MediaQuery.of(context).size.width,
               height: 0.17 * MediaQuery.of(context).size.height,
               child: Stack(
                 children: [
@@ -111,15 +112,31 @@ class ItemCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Text(
-                    product.name,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    softWrap: false,
-                    style: const TextStyle(
-                      color: Colors.black,
-                      fontSize: 16,
-                    ),
+                  Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(
+                        product.name,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        softWrap: false,
+                        style: const TextStyle(
+                          color: Colors.black,
+                          fontSize: 16,
+                        ),
+                      ),
+                      const Spacer(),
+                      Text(
+                        product.vendorName,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        softWrap: false,
+                        style: const TextStyle(
+                          color: Colors.black,
+                          fontSize: 16,
+                        ),
+                      ),
+                    ],
                   ),
                   Text(
                     "\$${product.price}",
@@ -128,15 +145,35 @@ class ItemCard extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 10),
-                  AddToCartButton(
-                      isInCart: isAlreadyProductInCart(context),
-                      product: product)
+                  Flexible(
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        AddToCartButton(
+                            isInCart: isAlreadyProductInCart(context),
+                            product: product),
+                        IconButton(
+                          onPressed: () =>
+                              _callNumber(product.vendorPhoneNumber),
+                          icon: const Icon(
+                            Icons.phone,
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
                 ],
               ),
-            )
+            ),
           ],
         ),
       ),
     );
+  }
+
+  _callNumber(phoneNumber) async {
+    const number = '0859211788'; //set the number here
+
+    bool? res = await FlutterPhoneDirectCaller.callNumber(phoneNumber);
   }
 }

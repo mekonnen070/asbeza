@@ -2,34 +2,42 @@ import 'package:asbeza_app/models/product.dart';
 
 List<Product> _fruitProducts = [
   Product(
-      productId: 'f1',
-      name: 'Apple',
-      price: 55,
-      discount: 13,
-      description: 'This is Apple\'s description.',
-      categoryId: 'c1',
-      subCategoryId: 'sb_1',
-      unitsSold: 16,
-      createdAt: '01/01/2015',
-      images: appleImage)
+    productId: 'f1',
+    name: 'Apple',
+    price: 55,
+    discount: 13,
+    description: 'This is Apple\'s description.',
+    categoryId: 'c1',
+    subCategoryId: 'sb_1',
+    unitsSold: 16,
+    createdAt: '01/01/2015',
+    images: appleImage,
+    vendorName: 'Apple Vendor',
+    vendorPhoneNumber: '0700000000',
+  )
 ];
 List<Product> _vegetableProducts = [
   Product(
-      productId: 'v1',
-      name: 'Brocoli',
-      price: 45,
-      discount: 20,
-      description: 'This is Brocoli\'s description.',
-      categoryId: 'c2',
-      subCategoryId: 'sb_2',
-      unitsSold: 16,
-      createdAt: '01/01/2015',
-      images: brocoliImage)
+    productId: 'v1',
+    name: 'Brocoli',
+    price: 45,
+    discount: 20,
+    description: 'This is Brocoli\'s description.',
+    categoryId: 'c2',
+    subCategoryId: 'sb_2',
+    unitsSold: 16,
+    createdAt: '01/01/2015',
+    images: brocoliImage,
+    vendorName: 'Brocoli Vendor',
+    vendorPhoneNumber: '0700000000',
+  )
 ];
 List<Product> _spiceProducts = [
   Product(
       productId: 's1',
       name: 'Chilli',
+      vendorName: 'Chilli Vendor',
+      vendorPhoneNumber: '0700000000',
       price: 32,
       discount: 15,
       description: 'This is Chilli\'s description.',

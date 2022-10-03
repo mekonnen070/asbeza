@@ -31,6 +31,8 @@ class Product {
   Product({
     required this.productId,
     required this.name,
+    required this.vendorName,
+    required this.vendorPhoneNumber,
     required this.price,
     required this.discount,
     required this.description,
@@ -44,6 +46,8 @@ class Product {
   String productId;
   String name;
   int price;
+  String vendorName;
+  String vendorPhoneNumber;
   int discount;
   String description;
   String categoryId;
@@ -56,6 +60,8 @@ class Product {
         productId: json["productId"],
         name: json["name"],
         price: json["price"],
+        vendorName: json["vendorName"],
+        vendorPhoneNumber: json["vendorPhoneNumber"],
         discount: json["discount"],
         description: json["description"],
         categoryId: json["categoryId"],
@@ -68,6 +74,8 @@ class Product {
   Map<String, dynamic> toJson() => {
         "productId": productId,
         "name": name,
+        "vendorName": vendorName,
+        "vendorPhoneNumber": vendorPhoneNumber,
         "price": price,
         "discount": discount,
         "description": description,
